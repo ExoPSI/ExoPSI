@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
 import random
-from subfunctions import calculate_weight, calc_ESI_param, SI_intsurf
+from .subfunctions import calculate_weight, calc_ESI_param, SI_intsurf
 from matplotlib.ticker import AutoMinorLocator
 from matplotlib import gridspec
 
