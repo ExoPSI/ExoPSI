@@ -18,7 +18,7 @@ class exopsi:
 
 
     #Calculate SI
-    def calc_ESI(self, params, upper_lims=None, lower_lims=None,ref_val=None,threshold = 0.8,int_param = None,surf_param = None,p_index = None):
+    def calc_psi(self, params, upper_lims=None, lower_lims=None,ref_val=None,threshold = 0.8,int_param = None,surf_param = None,p_index = None):
         colnames = list(params.columns)
     
         #Default Upper Lims
@@ -69,10 +69,15 @@ class exopsi:
 
     #PLOTTING FUNCTIONS
     #1.Plot Interior vs Surface ESI
-    def ESI_SI(self, df):  
-        #sample = random.sample(sorted(df['ESI_Global']),200)
-        data_x = df['ESI_Interior']
-        data_y = df['ESI_Surface']
+    def psi_scale(self, df, x=None, y=None):
+
+        if (x==None and y==None):  
+            #sample = random.sample(sorted(df['ESI_Global']),200)
+            data_x = df['ESI_Interior']
+            data_y = df['ESI_Surface']
+        
+        data_x = df['x']
+        data_y = df['y']
         
         fig,ax = plt.subplots(1)
         scatter = ax.scatter(data_x, data_y, cmap="viridis")
@@ -126,7 +131,7 @@ class exopsi:
         return fig 
 
     #Plot 2: Planetary bodies histogram
-    def ESI_hist(self, df):
+    def psi_dist(self, df):
 
         facecolor = '#EAEAEA'
         color_bars = '#3475D0'
@@ -148,7 +153,8 @@ class exopsi:
         plt.grid(which='minor', lw = 2.0, color=facecolor)
 
         # x ticks labels
-        x_tickslabels = [ "{:.2f} - {:.2f}".format(value, bins[idx+1]) for idx, value in enumerate(bins[:-1])]
+        #x_tickslabels = [ "{:.2f} - {:.2f}".format(value, bins[idx+1]) for idx, value in enumerate(bins[:-1])]
+        x_tickslabels = ["Very Low Similarity", "Low Similarity", "Moderate Similarity","High Similarity", "Very High Similarity"]
         # x ticks positions
         x_ticks = [(bins[idx+1] + value)/2 for idx, value in enumerate(bins[:-1])]
 

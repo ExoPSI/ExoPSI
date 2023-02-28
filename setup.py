@@ -15,7 +15,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 # This call to setup() does all the work
 setup(
     name="ExoPSI",
-    version="0.1.0",
+    version="0.1.2",
     description="Library to calculate Similarity Indexes",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -24,7 +24,7 @@ setup(
     author_email="rai.aditya01@gmail.com",
     license="GNU GPL v3.0",
     classifiers=[
-        "Intended Audience :: Developers",
+        "Intended Audience :: Developers",  
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
