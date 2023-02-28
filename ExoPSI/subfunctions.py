@@ -13,9 +13,9 @@ def calculate_weight(ref_val, upper_lim, lower_lim, threshold=0.8):
   return weight
 
 
-#Calculate Earth Similarity Index for Individual Params
+#Calculate Similarity Index for Individual Params
 
-def calc_ESI_param(param, upper_lim, lower_lim,ref_val, threshold = 0.8):
+def calc_PSI_param(param, upper_lim, lower_lim,ref_val, threshold = 0.8):
   w = {'radius': 0.57, 'density': 1.07, 'escape_velocity': 0.70, 'revolution': 0.70, 'surface_gravity': 0.13, 'surface_temperature': 5.58}
 
   ref_values = {'radius': 1, 'density': 1, 'escape_velocity': 1, 'revolution': 1, 'surface_gravity': 1, 'surface_temperature': 288}
@@ -32,19 +32,19 @@ def calc_ESI_param(param, upper_lim, lower_lim,ref_val, threshold = 0.8):
   else:
     weight = calculate_weight(ref_val, upper_lim,  lower_lim,  threshold)  
     
-  ESI_P = [] 
+  PSI_P = [] 
   
   for i in range(len(param)):
     V = round(math.pow(1-abs((param.iat[i,0] - ref_val)/(ref_val + param.iat[i,0])), weight), 6)
-    ESI_P.append(V)
+    PSI_P.append(V)
   
-  return ESI_P
+  return PSI_P
 
 
 
 
 
-#function to calculate combined ESI
+#function to calculate combined PSI
 def SI_intsurf(data):
     SI_intsurf_df = pd.DataFrame()
     n = len(data.columns)

@@ -3,21 +3,22 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
 import random
-from .subfunctions import calculate_weight, calc_ESI_param, SI_intsurf
+from .subfunctions import calculate_weight, calc_PSI_param, SI_intsurf
 from matplotlib.ticker import AutoMinorLocator
 from matplotlib import gridspec
 
 class exopsi:
     #Calculate Weight
     def calc_weight(self, ref_val, upper_lim, lower_lim, threshold=0.8):
-        
-        weight = calculate_weight(ref_val, upper_lim, lower_lim, threshold=0.8)
+        weight = list() 
+        for i in range(0,len(ref_val)):
+            weight.append(calculate_weight(ref_val[i], upper_lim[i], lower_lim[i], threshold))
 
-        print(f"The calculated weight is {weight}")
+        print(f"The calculated weight(s) is(are): {weight}")
 
 
 
-    #Calculate SI
+    #Calculate PSI
     def calc_psi(self, params, upper_lims=None, lower_lims=None,ref_val=None,threshold = 0.8,int_param = None,surf_param = None,p_index = None):
         colnames = list(params.columns)
     
@@ -40,24 +41,24 @@ class exopsi:
                 upper_lims[i]>=lower_lims[i]
 
             #Calculate Weights    
-            ESI_df = pd.DataFrame()
+            PSI_df = pd.DataFrame()
             for i in range(0, len(colnames)):
-                ESI_param = calc_ESI_param(params.iloc[:,[i]], upper_lims[i], lower_lims[i],ref_val[i],threshold)
-                ESI_colname = "ESI_{}".format(colnames[i])
-                ESI_df[ESI_colname] = ESI_param
-            ESI_df.index = params.index
+                PSI_param = calc_PSI_param(params.iloc[:,[i]], upper_lims[i], lower_lims[i],ref_val[i],threshold)
+                PSI_colname = "PSI_{}".format(colnames[i])
+                PSI_df[PSI_colname] = PSI_param
+            PSI_df.index = params.index
             if int_param != None:
-                ESI_int_param = list('ESI_{}'.format(col) for col in int_param)
-                ESI_df['ESI_Interior'] = SI_intsurf(ESI_df.loc[:,ESI_int_param])
+                PSI_int_param = list('PSI_{}'.format(col) for col in int_param)
+                PSI_df['PSI_Interior'] = SI_intsurf(PSI_df.loc[:,PSI_int_param])
             if surf_param != None:
-                ESI_surf_param = list('ESI_{}'.format(col) for col in surf_param)
-                ESI_df['ESI_Surface'] = SI_intsurf(ESI_df.loc[:,ESI_surf_param])
+                PSI_surf_param = list('PSI_{}'.format(col) for col in surf_param)
+                PSI_df['PSI_Surface'] = SI_intsurf(PSI_df.loc[:,PSI_surf_param])
             if int_param != None and surf_param != None:
-                ESI_df['ESI_Global'] = SI_intsurf(ESI_df.loc[:,['ESI_Interior','ESI_Surface']])
+                PSI_df['PSI_Global'] = SI_intsurf(PSI_df.loc[:,['PSI_Interior','PSI_Surface']])
             if p_index.empty != True:
-                ESI_df.insert(loc = 0, column = 'P.Name', value = p_index)
+                PSI_df.insert(loc = 0, column = 'P.Name', value = p_index)
             
-            return ESI_df
+            return PSI_df
             
         
         
@@ -68,22 +69,22 @@ class exopsi:
 
 
     #PLOTTING FUNCTIONS
-    #1.Plot Interior vs Surface ESI
+    #1.Plot Interior vs Surface PSI
     def psi_scale(self, df, x=None, y=None):
 
         if (x==None and y==None):  
-            #sample = random.sample(sorted(df['ESI_Global']),200)
-            data_x = df['ESI_Interior']
-            data_y = df['ESI_Surface']
-        
-        data_x = df['x']
-        data_y = df['y']
+            #sample = random.sample(sorted(df['PSI_Global']),200)
+            data_x = df['PSI_Interior']
+            data_y = df['PSI_Surface']
+        else:
+            data_x = df[x]
+            data_y = df[y]
         
         fig,ax = plt.subplots(1)
         scatter = ax.scatter(data_x, data_y, cmap="viridis")
-        plt.xlabel("ESI_Interior")
-        plt.ylabel("ESI_Surface")
-        plt.title("Interior VS Surface ESI")
+        plt.xlabel("PSI_Interior")
+        plt.ylabel("PSI_Surface")
+        plt.title("Interior VS Surface PSI")
         
         #Create Annotation Object
         annotation = ax.annotate(
@@ -104,7 +105,7 @@ class exopsi:
 
                 if is_contained:
                     data_point_location = scatter.get_offsets()[annotation_index['ind'][0]]
-                    data_point_index = df.index[(df['ESI_Interior'] == data_point_location[0]) & (df['ESI_Surface'] == data_point_location[1])]
+                    data_point_index = df.index[(df['PSI_Interior'] == data_point_location[0]) & (df['PSI_Surface'] == data_point_location[1])]
                     data_point_row = df.loc[data_point_index]
 
                     planet_name = data_point_row['P.Name'].values[0]
@@ -138,14 +139,14 @@ class exopsi:
         txt_color1 = '#252525'
         txt_color2 = '#004C74'
 
-        # df['bin'] = pd.cut(df['ESI_Global'], [0,0.2,0.4,0.6,0.8,1.0], labels=['0-0.2','0.2-0.4', '0.4-0.6', '0.6-0.8', '0.8-1.0'])
+        # df['bin'] = pd.cut(df['PSI_Global'], [0,0.2,0.4,0.6,0.8,1.0], labels=['0-0.2','0.2-0.4', '0.4-0.6', '0.6-0.8', '0.8-1.0'])
         # imd = df.groupby(['bin']).count()
-        # y = imd['ESI_Global']
+        # y = imd['PSI_Global']
     
         # plot
         fig, ax = plt.subplots(facecolor=facecolor, figsize=(8,4))
         ax.set_facecolor(facecolor)
-        n, bins, patches = ax.hist(df['ESI_Global'], bins=[0,0.2,0.4,0.6,0.8,1.0], color=color_bars)
+        n, bins, patches = ax.hist(df['PSI_Global'], bins=[0,0.2,0.4,0.6,0.8,1.0], color=color_bars)
 
 
         minor_locator = AutoMinorLocator(2)
@@ -162,10 +163,10 @@ class exopsi:
         
 
 
-        plt.xlabel('\nESI Values', c=txt_color2, fontsize=10)
+        plt.xlabel('\nPSI Values', c=txt_color2, fontsize=10)
         plt.ylabel('No. of Planets', c=txt_color2, fontsize=10)
         plt.tight_layout()
-        plt.title('ESI Values Histogram', loc = 'center', fontsize = 12)
+        plt.title('PSI Values Histogram', loc = 'center', fontsize = 12)
     
         # remove major and minor ticks from the x axis, but keep the labels
         ax.tick_params(axis='x', which='both',length=0)
@@ -192,13 +193,14 @@ class exopsi:
         return fig 
 
     #function to convert units of P1 wrt P2, all columns should have same units
-    def unit_conv(data,ref_index):
-        unit_conv_df = pd.DataFrame()   
+    def unit_conv(data,ref_index,unit_name):
+        unit_conv_df = pd.DataFrame() 
         for j in data.index:
             k=0 
             for i in data.columns:
                 x = float(data.loc[j,i])/ref_index[k]
-                unit_conv_df.loc[j,i] = x
+                unit_conv_colname = "{} in {}".format(i,unit_name)
+                unit_conv_df.loc[j,unit_conv_colname] = x
                 k+=1
         return unit_conv_df
 
