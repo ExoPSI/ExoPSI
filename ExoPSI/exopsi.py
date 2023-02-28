@@ -193,7 +193,7 @@ class exopsi:
         return fig 
 
     #function to convert units of P1 wrt P2, all columns should have same units
-    def unit_conv(data,ref_index,unit_name):
+    def unit_conv(self, data,ref_index,unit_name):
         unit_conv_df = pd.DataFrame() 
         for j in data.index:
             k=0 
