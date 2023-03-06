@@ -130,7 +130,7 @@ class exopsi:
         fig.canvas.mpl_connect('motion_notify_event', mouse_hover)
         plt.show()
         plt.close()
-        return fig 
+      
 
     #Plot 2: Planetary bodies histogram
     def psi_dist(self, df):
@@ -192,7 +192,7 @@ class exopsi:
                 
         plt.show()
         plt.close()
-        return fig 
+         
 
     #function to convert units of P1 wrt P2, all columns should have same units
     def unit_conv(self, data,ref_index,unit_name, p_index = pd.DataFrame()):
