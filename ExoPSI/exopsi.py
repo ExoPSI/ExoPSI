@@ -19,7 +19,7 @@ class exopsi:
 
 
     #Calculate PSI
-    def calc_psi(self, params, upper_lims=None, lower_lims=None,ref_val=None,threshold = 0.8,int_param = None,surf_param = None,p_index = None):
+    def calc_psi(self, params, upper_lims=None, lower_lims=None,ref_val=None,threshold = 0.8,int_param = None,surf_param = None,p_index = pd.Dataframe()):
         colnames = list(params.columns)
     
         #Default Upper Lims
@@ -193,7 +193,7 @@ class exopsi:
         return fig 
 
     #function to convert units of P1 wrt P2, all columns should have same units
-    def unit_conv(self,data,ref_index,unit_name='New Units', p_index = None):
+    def unit_conv(self,data,ref_index,unit_name='New Units', p_index = pd.DataFrame()):
         unit_conv_df = pd.DataFrame() 
         for j in data.index:
             k=0 
@@ -205,6 +205,3 @@ class exopsi:
         if p_index.empty != True:
             unit_conv_df.index = p_index        
         return unit_conv_df
-
-
-
