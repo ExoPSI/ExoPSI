@@ -129,6 +129,7 @@ class exopsi:
 
         fig.canvas.mpl_connect('motion_notify_event', mouse_hover)
         plt.show()
+        plt.close()
         return fig 
 
     #Plot 2: Planetary bodies histogram
@@ -190,6 +191,7 @@ class exopsi:
                 plt.text(x_ticks[idx], value+5, int(value),ha='center', fontsize=8, c=txt_color1)
                 
         plt.show()
+        plt.close()
         return fig 
 
     #function to convert units of P1 wrt P2, all columns should have same units
