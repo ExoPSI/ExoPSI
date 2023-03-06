@@ -19,7 +19,7 @@ class exopsi:
 
 
     #Calculate PSI
-    def calc_psi(self, params, upper_lims=None, lower_lims=None,ref_val=None,threshold = 0.8,int_param = None,surf_param = None,p_index = pd.Dataframe()):
+    def calc_psi(self, params, upper_lims=None, lower_lims=None,ref_val=None,threshold = 0.8,int_param = None,surf_param = None,p_index = pd.DataFrame()):
         colnames = list(params.columns)
     
         #Default Upper Lims
