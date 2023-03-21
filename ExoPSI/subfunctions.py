@@ -6,9 +6,8 @@ import pandas as pd
 
 #Calculate Weight for each parameter in the similarity index
 def calculate_weight(ref_val, upper_lim, lower_lim, threshold=0.8):
-  
-  w_lower = math.log(threshold)/math.log(1-((ref_val - lower_lim)/(ref_val + lower_lim)))
-  w_upper = math.log(threshold)/math.log(1-((upper_lim - ref_val)/(upper_lim + ref_val)))
+  w_lower = math.log(threshold)/math.log(1-abs((lower_lim - ref_val)/(ref_val + lower_lim)))
+  w_upper = math.log(threshold)/math.log(1-abs((upper_lim - ref_val)/(upper_lim + ref_val)))
   weight = round(math.sqrt(w_lower*w_upper), 2)
   return weight
 
