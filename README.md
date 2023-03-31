@@ -20,7 +20,7 @@ ExoPSI can only handle datasets of the type `pandas.core.frame.DataFrame`. As a 
 
 For example, [the PHL’s Exoplanet Catalog]([url](https://phl.upr.edu/projects/habitable-exoplanets-catalog/hec-data-of-potentially-habitable-worlds/phls-exoplanets-catalog)) (PHL-EC) of the Planetary Habitability Laboratory can be imported as:
 
-<img width="346" alt="image" src="https://user-images.githubusercontent.com/69034801/229121374-51837e5f-94a0-492b-a1c0-70dcce567dc9.png">
+<img width="344" alt="image" src="https://user-images.githubusercontent.com/69034801/229121497-06b1cdc4-6258-4b39-b082-086b039a79be.png">
 
 
 
