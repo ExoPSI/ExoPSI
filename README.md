@@ -16,5 +16,13 @@ To utilize the functions available in ExoPSI, import the library and instantiate
 
 ### Importing Datasets 
 
-ExoPSI can only handle datasets of the type `pandas.core.frame.DataFrame`. As a result, any dataset to be used has to be imported as a pandas data frame. 
+ExoPSI can only handle datasets of the type `pandas.core.frame.DataFrame`. As a result, any dataset to be used has to be imported as a pandas data frame.  
+
+For example, [the PHL’s Exoplanet Catalog]([url](https://phl.upr.edu/projects/habitable-exoplanets-catalog/hec-data-of-potentially-habitable-worlds/phls-exoplanets-catalog)) (PHL-EC) of the Planetary Habitability Laboratory can be imported as:
+
+<img width="346" alt="image" src="https://user-images.githubusercontent.com/69034801/229121374-51837e5f-94a0-492b-a1c0-70dcce567dc9.png">
+
+
+
+
 
