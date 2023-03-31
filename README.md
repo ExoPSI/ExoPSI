@@ -8,3 +8,8 @@ ExoPSI offers the ability to use any planet as a reference point and visualizati
 
 ### Getting Started
 To utilize the functions available in ExoPSI, import the library and instantiate an object of the **exospi** class.
+
+<img width="196" alt="image" src="https://user-images.githubusercontent.com/69034801/229033184-e12cc1ea-a19d-4a4f-b761-57f76d09c3aa.png">
+
+
+
