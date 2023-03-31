@@ -38,7 +38,9 @@ and the following output is received:
 
 <img width="342" alt="image" src="https://user-images.githubusercontent.com/69034801/229123200-996b1095-e792-4b4c-9276-c124b6b04177.png">
 
+<hr>
 
+### Calculating Planet Similarity Index (PSI)
 
 
 
