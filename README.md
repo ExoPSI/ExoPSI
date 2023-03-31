@@ -1,5 +1,4 @@
 # ExoPSI
-<hr>
 
 ExoPSI is an open source Python package which offers similarity indexing of exoplanets in order to assess their habitability. It provides the capability to calculate similarity indices of different planetary candidates with respect to any reference values and any numerical parameter, yielding a more accurate evaluation of the survivability of different species. 
 
