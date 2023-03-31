@@ -28,7 +28,7 @@ For example, [the PHL’s Exoplanet Catalog]([url](https://phl.upr.edu/projects/
 
 All similarity indices rely on parameters,to calculate the similarity of planets. The weights of individual parameters can be computed by providing the reference value, the lower and upper limits for the parameter (where, lower limit ≤ referance value ≤ upper limit). Optionally, a threshold value of the similarity index (default = 0.8) can also be provided. 
 
-`The calc weight function` calculates the weight parameters and takes in ref val, upper lim, lower lim and threshold (optional) for the reference values, upper limits, lower limits and threshold value, respectively.
+The `calc_weight` function calculates the weight parameters and takes in ref val, upper lim, lower lim and threshold (optional) for the reference values, upper limits, lower limits and threshold value, respectively.
 
 The below example uses planetary radius, density, escape velocity (in Earth Units) and temperature(K) as the parameters.
 
