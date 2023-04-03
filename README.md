@@ -6,6 +6,12 @@ ExoPSI offers the ability to use any planet as a reference point and visualizati
 
 <hr>
 
+### Installation
+
+To Install ExoPSI simply use pip and type in the following command `pip install ExoPSI`.
+
+<hr>
+
 ### Getting Started
 
 To utilize the functions available in ExoPSI, import the library and instantiate an object of the _`exopsi`_ class.
@@ -42,5 +48,16 @@ and the following output is received:
 
 ### Calculating Planet Similarity Index (PSI)
 
+The Planet Similarity Index (PSI) is the modified equivalent of the traditional Earth Similarity Index (ESI) and can be calculated for single or multiple planetary properties. As the name suggests it is used to find the simlarity between planets. ExoPSI offers the capability to use any planet as the reference planet. 
+
+To utilise this functionality kindly use the `calc_psi` function.  The `calc_psi` function takes in the following inputs:
+1) params - The dataset containing the values of the different parameters for which PSI is to be calculated.
+2) upper lim - The list of upper limits for the given parameters.
+3) lower lim - The list of lower limits for the given parameters.
+4) ref val - The list of reference values for the given parameters.
+5) threshold (optional) - The threshold value to be considered for very high similarity (default = 0.8).
+6) int param (optional) - List of column names that contribute to interior PSI.
+7) surf param (optional) - List of column names that contribute to surface PSI.
+8) p index(optional) - A column (passed as a pandas data frame) that is to be used as the index for the table.
 
 
