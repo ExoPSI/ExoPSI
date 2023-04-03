@@ -68,3 +68,17 @@ and the output is:
 
 <img width="554" alt="image" src="https://user-images.githubusercontent.com/69034801/229439307-f1ed6ffa-841a-4d1e-bfa6-7b9870ff6679.png">
 
+<hr>
+
+### Unit Conversion 
+
+The similarity index calculations are simplified by converting the property values into a single unit scale. Unit conversion provides the ability to find the value of planetary properties relative to a single planet. This has the added advantage of providing a method for comparing planetary features. ExoPSI offers unit conversion through the function unit conv requiring the data to be converted, the transformation reference value (the values of the given parameters in the same units as the data for the planet taken as the reference), and the name that should be assigned to the unit. These are taken as function arguments data, ref index and unit name. The p index argument serves the same purpose as in the calc psi function.It returns a pandas data frame containing the data values in the desired unit scale.
+
+An example using the [the PHL’s Exoplanet Catalog]([url](https://phl.upr.edu/projects/habitable-exoplanets-catalog/hec-data-of-potentially-habitable-worlds/phls-exoplanets-catalog)) is given: 
+
+<img width="536" alt="image" src="https://user-images.githubusercontent.com/69034801/229440594-03f9be53-072f-46f6-9efd-38928357abe7.png">
+
+
+and the output is: 
+
+<img width="363" alt="image" src="https://user-images.githubusercontent.com/69034801/229440691-c8edeae2-021d-43c1-a41d-cd2a85d91ed8.png">
