@@ -58,6 +58,13 @@ To utilise this functionality kindly use the `calc_psi` function.  The `calc_psi
 5) threshold (optional) - The threshold value to be considered for very high similarity (default = 0.8).
 6) int param (optional) - List of column names that contribute to interior PSI.
 7) surf param (optional) - List of column names that contribute to surface PSI.
-8) p index(optional) - A column (passed as a pandas data frame) that is to be used as the index for the table.
+8) p index (optional) - A column (passed as a pandas data frame) that is to be used as the index for the table.
 
+An example using the [the PHL’s Exoplanet Catalog]([url](https://phl.upr.edu/projects/habitable-exoplanets-catalog/hec-data-of-potentially-habitable-worlds/phls-exoplanets-catalog)) is given: 
+
+<img width="703" alt="image" src="https://user-images.githubusercontent.com/69034801/229439158-a2306951-0a89-418a-b3bc-9e5ed94fc6b8.png">
+
+and the output is: 
+
+<img width="554" alt="image" src="https://user-images.githubusercontent.com/69034801/229439307-f1ed6ffa-841a-4d1e-bfa6-7b9870ff6679.png">
 
