@@ -15,14 +15,14 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 # This call to setup() does all the work
 setup(
     name="ExoPSI",
-    version="0.1.8",
-    description="Library to calculate Similarity Indexes",
+    version="1.0.1",
+    description="Library to calculate Planet Similarity Indexes",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ExoPSI/ExoPSI",
     author=["Aditya Rai","Vaibhav Garg"],
-    author_email=["rai.aditya01@gmail.com","vaibhav.garg.0310@gmail.com"],
-    license="GNU GPL v3.0",
+    author_email="rai.aditya01@gmail.com",
+    license="GNU GPL v3.0", 
     classifiers=[
         "Intended Audience :: Developers",  
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
