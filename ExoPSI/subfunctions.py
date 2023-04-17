@@ -34,7 +34,7 @@ def calc_PSI_param(param, upper_lim, lower_lim,ref_val, threshold = 0.8):
   PSI_P = [] 
   
   for i in range(len(param)):
-    V = round(math.pow(1-abs((param.iat[i,0] - ref_val)/(ref_val + param.iat[i,0])), weight), 6)
+    V = round(math.pow(1-abs((param.iat[i,0] - ref_val)/(ref_val + param.iat[i,0])), weight), 2)
     PSI_P.append(V)
   
   return PSI_P
@@ -52,6 +52,7 @@ def SI_intsurf(data):
         data.loc[:,'new'] = data.loc[:,'new']*data.iloc[:,i]
     
     data.loc[:,'new'] = pow(data.loc[:,'new'],1/n)
-    return data.loc[:,'new']
+    rounded_value = round(data.loc[:,'new'],2)
+    return rounded_value
 
 

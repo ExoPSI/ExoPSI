@@ -15,6 +15,8 @@ class exopsi:
             weight.append(calculate_weight(ref_val[i], upper_lim[i], lower_lim[i], threshold))
 
         print(f"The calculated weight(s) is(are): {weight}")
+        return weight
+    
 
 
 
@@ -70,7 +72,7 @@ class exopsi:
 
     #PLOTTING FUNCTIONS
     #1.Plot Interior vs Surface PSI
-    def psi_scale(self, df, x=None, y=None):
+    def psi_scale(self, df, x=None, y=None, color=None):
 
         if (x==None and y==None):  
             #sample = random.sample(sorted(df['PSI_Global']),200)
@@ -80,11 +82,18 @@ class exopsi:
             data_x = df[x]
             data_y = df[y]
         
-        fig,ax = plt.subplots(1)
-        scatter = ax.scatter(data_x, data_y, cmap="viridis")
-        plt.xlabel("PSI_Interior")
-        plt.ylabel("PSI_Surface")
-        plt.title("PSI Scale")
+        if (color==None):
+            fig,ax = plt.subplots(1)
+            scatter = ax.scatter(data_x, data_y, cmap="viridis")
+            plt.xlabel("PSI_Interior")
+            plt.ylabel("PSI_Surface")
+            plt.title("PSI Scale")
+        else:
+            fig,ax = plt.subplots(1)
+            scatter = ax.scatter(data_x, data_y, color=color)
+            plt.xlabel("PSI_Interior")
+            plt.ylabel("PSI_Surface")
+            plt.title("PSI Scale")
         
         #Create Annotation Object
         annotation = ax.annotate(
@@ -130,6 +139,7 @@ class exopsi:
         fig.canvas.mpl_connect('motion_notify_event', mouse_hover)
         plt.show()
         plt.close()
+        return plt
       
 
     #Plot 2: Planetary bodies histogram
@@ -192,6 +202,7 @@ class exopsi:
                 
         plt.show()
         plt.close()
+        return plt
          
 
     #function to convert units of P1 wrt P2, all columns should have same units
@@ -201,6 +212,7 @@ class exopsi:
             k=0 
             for i in data.columns:
                 x = float(data.loc[j,i])/ref_index[k]
+                x= round(x, 8)
                 unit_conv_colname = "{} in {}".format(i,unit_name)
                 unit_conv_df.loc[j,unit_conv_colname] = x
                 k+=1
